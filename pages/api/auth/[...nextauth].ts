@@ -4,7 +4,7 @@ import Credentials from "next-auth/providers/credentials";
 
 import { dbUsers } from "../../../database";
 
-export const authOptions = {
+export const authOptions:any = {
   // Configure one or more authentication providers
   providers: [
     
@@ -27,7 +27,7 @@ export const authOptions = {
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
-    }),
+    } as any ),
     
     // ...add more providers here
   ],
@@ -49,7 +49,7 @@ export const authOptions = {
 
   //Callbacks
   callbacks: {
-    async jwt({ token, account, user }) {
+    async jwt({ token, account, user }: any) {
       //console.log({token, account, user});
       if ( account ) {
         token.accessToken = account.access_token;
@@ -70,7 +70,7 @@ export const authOptions = {
 
     },
 
-    async session({ session, token, user}) {
+    async session({ session, token, user}: any) {
       // console.log({session, token, user});
 
       session.accessToken = token.accessToken;
