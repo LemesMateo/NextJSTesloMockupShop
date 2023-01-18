@@ -1,23 +1,31 @@
 import { NextFetchEvent, NextRequest, NextResponse } from 'next/server'
 import * as jose from "jose";
-// import { getToken } from "next-auth/jwt";
+import { getToken } from "next-auth/jwt";
 
-export async function middleware(request: NextRequest, ev: NextFetchEvent) {
+export async function middleware(req: NextRequest, ev: NextFetchEvent) {
 
     
-  if (request.nextUrl.pathname.startsWith('/checkout')) {
+  if (req.nextUrl.pathname.startsWith('/checkout')) {
 
-    /* Codigo nuevo que no anduvo:
-    const session = await getToken({ request, secret: process.env.NEXTAUTH_SECRET })
-    console.log(session)
+    // Codigo nuevo que no anduvo:
+    const session = await getToken({ req, secret: process.env.NEXTAUTH_SECRET })
+    // console.log(session);
     if(!session) {
-        const {protocol, host, pathname} = request.nextUrl;
-        return NextResponse.redirect(`${protocol}//${host}/auth/login?p=${pathname}`);
+        const requestedPage = req.nextUrl.pathname;
+        const url = req.nextUrl.clone();
+        url.pathname = `/auth/login`;
+        url.search = `p=${requestedPage}`
+        return NextResponse.redirect(url);
+
+
+        // const {protocol, host, pathname} = request.nextUrl;
+        // return NextResponse.redirect(`${protocol}//${host}/auth/login?p=${pathname}`);
+        
     }
-    return NextResponse.next(); */
+    return NextResponse.next();
     
     // This logic is only applied to /checkout/address
-        const token = request.cookies.get('token');
+    /*     const token = request.cookies.get('token');
         
         try {
             await jose.jwtVerify(
@@ -32,7 +40,7 @@ export async function middleware(request: NextRequest, ev: NextFetchEvent) {
             return NextResponse.redirect(
                 `${protocol}//${host}/auth/login?p=${pathname}`
             );   
-        }    
+        }     */
   }
 
 }
