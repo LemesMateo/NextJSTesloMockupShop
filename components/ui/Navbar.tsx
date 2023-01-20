@@ -10,6 +10,8 @@ import ShoppingCartOutlined from '@mui/icons-material/ShoppingCartOutlined'
 import { useRouter } from "next/router"
 
 import { CartContext, UiContext } from "../../context"
+import Image from "next/image"
+import shopLogo from '../../public/Mateo Shop Logo - Black.png';
 
 
 export const Navbar: FC = () => {
@@ -34,7 +36,13 @@ export const Navbar: FC = () => {
         <Toolbar>
             <NextLink href='/' passHref>
                 <Link display='flex' alignItems='center' >
-                    <Typography variant="h6">Mateo |</Typography>
+                    <Image 
+                        src={shopLogo} 
+                        width={60} //56
+                        height={30} //25
+                        alt='Shop Logo'
+                    />
+                    <Typography variant="h6">  Mateo |</Typography>
                     <Typography sx={{ ml: 0.5 }} >Shop</Typography>
                 </Link>
             </NextLink>

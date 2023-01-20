@@ -40,6 +40,9 @@ const AddressPage = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
         defaultValues: getAddressFromCookies()
     });
+
+
+    
     const onSubmitAddress = (data:FormData) => {
         
 

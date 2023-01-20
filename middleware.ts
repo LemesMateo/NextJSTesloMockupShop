@@ -7,7 +7,7 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
     
   if (req.nextUrl.pathname.startsWith('/checkout')) {
 
-    // Codigo nuevo que no anduvo:
+    
     const session = await getToken({ req, secret: process.env.NEXTAUTH_SECRET })
     // console.log(session);
     if(!session) {
@@ -18,13 +18,14 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
         return NextResponse.redirect(url);
 
 
+        //codigo que no anduvo:
         // const {protocol, host, pathname} = request.nextUrl;
         // return NextResponse.redirect(`${protocol}//${host}/auth/login?p=${pathname}`);
         
     }
     return NextResponse.next();
     
-    // This logic is only applied to /checkout/address
+    // Codigo viejo:
     /*     const token = request.cookies.get('token');
         
         try {
