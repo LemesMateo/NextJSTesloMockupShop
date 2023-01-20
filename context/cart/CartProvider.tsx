@@ -145,7 +145,7 @@ export const CartProvider:FC<PropsProvider> = ({ children }) => {
         throw new Error('No hay dirección de entrega');
       }
 
-      const body: IOrder = {
+      const body: IOrder | any = {
         orderItems: state.cart.map( p => ({
           ...p,
           size: p.size!
@@ -155,8 +155,7 @@ export const CartProvider:FC<PropsProvider> = ({ children }) => {
         subTotal: state.subTotal,
         tax: state.tax,
         total: state.total,
-        isPaid: false,
-        
+        isPaid: false,        
       }
 
       try {
