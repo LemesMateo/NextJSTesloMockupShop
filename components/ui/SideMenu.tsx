@@ -66,27 +66,7 @@ export const SideMenu = () => {
                     />
                 </ListItem>
 
-                {
-                    isLoggedIn && (
-                        <>
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <AccountCircleOutlined/>
-                                </ListItemIcon>
-                                <ListItemText primary={'Perfil'} />
-                            </ListItem>
-
-                            <ListItem button onClick={() => navigateTo(`/orders/history`) } >
-                                <ListItemIcon>
-                                    <ConfirmationNumberOutlined/>
-                                </ListItemIcon>
-                                <ListItemText primary={'Mis Ordenes'} />
-                            </ListItem>
-                        </>
-                    )
-
-                }
-
+                
                 <ListItem 
                     button 
                     sx={{ display: { xs: '', sm: 'none' } }}
@@ -117,6 +97,30 @@ export const SideMenu = () => {
                     </ListItemIcon>
                     <ListItemText primary={'Niños'} />
                 </ListItem>
+                <Divider  sx={{ display: { xs: '', sm: 'none' } }} />
+
+                {
+                    isLoggedIn && (
+                        <>
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <AccountCircleOutlined/>
+                                </ListItemIcon>
+                                <ListItemText primary={'Perfil'} />
+                            </ListItem>
+
+                            <ListItem button onClick={() => navigateTo(`/orders/history`) } >
+                                <ListItemIcon>
+                                    <ConfirmationNumberOutlined/>
+                                </ListItemIcon>
+                                <ListItemText primary={'Mis Ordenes'} />
+                            </ListItem>
+                        </>
+                    )
+
+                }
+
+                
 
                 {
                     isLoggedIn
