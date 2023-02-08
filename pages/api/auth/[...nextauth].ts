@@ -1,6 +1,8 @@
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
+import GoogleProvider from 'next-auth/providers/google'
 import Credentials from "next-auth/providers/credentials";
+// import TwitterProvider from "next-auth/providers/twitter";
 
 import { dbUsers } from "../../../database";
 
@@ -28,6 +30,14 @@ export const authOptions:any = {
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     } as any ),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET
+    } as any ),
+    /* TwitterProvider({
+      clientId: process.env.TWITTER_CLIENT_ID,
+      clientSecret: process.env.TWITTER_CLIENT_SECRET
+    } as any ), */
     
     // ...add more providers here
   ],

@@ -18,7 +18,7 @@ const SearchPage: NextPage<Props> = ({products, foundProducts, query}) => {
 
 
   return (
-    <ShopLayout title={'Teslo-Shop - Search'} pageDescription={'Busqueda de productos de Teslo'}>
+    <ShopLayout title={'Matts-Shop - Search'} pageDescription={'Busqueda de productos de Matts Shop'}>
         <Typography variant='h1' component='h1'>Buscar productos</Typography>
 
         {
